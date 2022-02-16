@@ -1130,6 +1130,7 @@ func (rc *RouteController) sync(ctx context.Context, key string) error {
 			return fmt.Errorf("can't set status: %w", err)
 		}
 
+		route := routeReadOnly.DeepCopy()
 		route.Spec.TLS.Key = string(certPemData.Key)
 		route.Spec.TLS.Certificate = string(certPemData.Crt)
 
